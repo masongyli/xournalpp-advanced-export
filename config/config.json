@@ -1,0 +1,20 @@
+{
+    "pipeline": [
+        {
+            "type": "load",
+            "config": {
+                "crop_empty_margins": true
+            }
+        },
+        {
+            "type": "combine",
+            "config": {
+                "direction": "rtl",
+                "vertical_align": "bottom"
+            }
+        },
+        {
+            "type": "save"
+        }
+    ]
+}
