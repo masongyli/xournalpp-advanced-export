@@ -1,8 +1,8 @@
 require("config")
 
-function initUi()
-  app.registerUi({["menu"] = "Edit config.lua ", ["callback"] = "editConfigLua", ["accelerator"] = edit_config_lua_shortcut});
+file_separator = package.config:sub(1,1)
 
+function initUi()
   for i, settings in ipairs(settings_all) do
     local activate_shortcut = settings[1]
     local user_config = settings[2]
@@ -17,12 +17,26 @@ function initUi()
     _G[func_name] = load(func_code)
     app.registerUi({["menu"] = "Edit " .. user_config, ["callback"] = func_name, ["accelerator"] = edit_config_shortcut});
   end
+
+  app.registerUi({["menu"] = "Edit config.lua ", ["callback"] = "editConfigLua", ["accelerator"] = edit_config_lua_shortcut});
 end
 
 function editConfigLua()
   local plugin_path = script_path()
   local config_path = plugin_path .. "config.lua"
-  os.execute("xdg-open " .. config_path)
+
+  -- Linux
+  if file_separator == "/" then
+    os.execute("xdg-open " .. config_path)
+  
+  -- Windows
+  elseif file_separator == "\\" then
+    os.execute("start \"\" " .. config_path)
+  else
+    app.msgbox("Unknown system", {[1] = "Ok"})
+    return
+  end
+
   app.msgbox("After changing config.lua, you need to repoen the xournal++ note for it to take efftect.", {[1] = "Ok"})
 end
 
@@ -31,11 +45,25 @@ function editConfigFile(config_file)
   local plugin_path = script_path()
   local config_path = plugin_path .. "config" .. file_separator .. config_file
 
-  if not file_exists(config_path) then
-    os.execute("touch " .. config_path)
-  end
+  -- Linux
+  if file_separator == "/" then
+    if not file_exists(config_path) then
+      os.execute("touch " .. config_path)
+    end
 
-  os.execute("xdg-open " .. config_path)
+    os.execute("xdg-open " .. config_path)
+
+  -- Windows
+  elseif file_separator == "\\" then
+    if not file_exists(config_path) then
+      os.execute("type nul > " .. config_path)
+    end
+
+    os.execute("start \"\" " .. config_path)
+  else
+    app.msgbox("Unknown system", {[1] = "Ok"})
+    return
+  end
 end
 
 function exportPng(config)
@@ -51,8 +79,6 @@ function exportPng(config)
   local plugin_path = script_path()
 
   -- Use file_separator to determine the OS
-  file_separator = package.config:sub(1,1)
-
   local python_path = ""
 
   -- Linux
