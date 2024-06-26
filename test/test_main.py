@@ -71,10 +71,10 @@ class TestMainIntegration(unittest.TestCase):
             "type": "load",
             "config": {
                 "paper_background_preserved": true,
-                "transparent_pdf_background": false,
-                "crop_empty_margins": true,
-                "direction_enabled": [false, true, false, true],
-                "paddings": [0, 50, 0, 50]
+                "pdf_background_transparent": false,
+                "trim": true,
+                "trim_directions": [false, true, false, true],
+                "trim_paddings": [0, 50, 0, 50]
             }
         },
         {
@@ -105,8 +105,8 @@ class TestMainIntegration(unittest.TestCase):
             "type": "load",
             "config": {
                 "paper_background_preserved": false,
-                "transparent_pdf_background": true,
-                "crop_empty_margins": false
+                "pdf_background_transparent": true,
+                "trim": false
             }
         },
         {
@@ -146,7 +146,7 @@ class TestMainIntegration(unittest.TestCase):
         {
             "type": "load",
             "config": {
-                "crop_empty_margins": true
+                "trim": true
             }
         },
         {
@@ -206,7 +206,7 @@ class TestMainIntegration(unittest.TestCase):
         {
             "type": "load",
             "config": {
-                "crop_empty_margins": true
+                "trim": true
             }
         },
         {
@@ -243,7 +243,7 @@ class TestMainIntegration(unittest.TestCase):
         {
             "type": "load",
             "config": {
-                "crop_empty_margins": true
+                "trim": true
             }
         },
         {
@@ -279,7 +279,7 @@ class TestMainIntegration(unittest.TestCase):
         {
             "type": "load",
             "config": {
-                "crop_empty_margins": true
+                "trim": true
             }
         },
         {

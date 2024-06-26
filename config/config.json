@@ -3,18 +3,25 @@
         {
             "type": "load",
             "config": {
-                "crop_empty_margins": true
+                "paper_background_preserved": true,
+                "trim": true,
+                "trim_directions": [false, true, false, true],
+                "trim_paddings": [0, 50, 0, 50]
             }
         },
         {
             "type": "combine",
             "config": {
-                "direction": "rtl",
-                "vertical_align": "bottom"
+                "direction": "ttb",
+                "horizontal_align": "center"
             }
         },
         {
-            "type": "save"
+            "type": "save",
+            "config": {
+                "directory": "{{xoppDir}}",
+                "filename": "{{xoppStem}}"
+            }
         }
     ]
 }
