@@ -48,10 +48,12 @@ class SaveOperation(Operation):
             # we cannot validate this path until the operation starts
             return
         
-        if not Path(path).is_absolute():
-            raise ValueError(f"Invalid directory path: '{path}'")
+        expanded_path = Path(path).expanduser()
+        
+        if not expanded_path.is_absolute():
+            raise ValueError(f"Can't use relative path: '{path}'")
     
-        if not Path(path).exists():
+        if not expanded_path.exists():
             raise FileNotFoundError(f"Directory '{path}' does not exist.")
                         
         
@@ -75,7 +77,7 @@ class SaveOperation(Operation):
     def _parse_directory_path(self, xopp_file_path: Path) -> Path:
         xopp_dir_path = xopp_file_path.parent
 
-        return Path(self.directory.replace("{{xoppDir}}", str(xopp_dir_path)))
+        return Path(self.directory.replace("{{xoppDir}}", str(xopp_dir_path))).expanduser()
     
     def _parse_filename(self, xopp_file_path: Path) -> Path:
         xopp_filename_stem = xopp_file_path.stem
