@@ -1,6 +1,6 @@
 settings_all = {
   -- {shortcut to start exporting, config file name, shortcut to edit this config file}
-  {"g", "config.json", ""},
+  {"g", "config.json", "i"},
 }
 
 edit_config_lua_shortcut = ""

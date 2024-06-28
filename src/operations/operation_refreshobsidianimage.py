@@ -1,12 +1,13 @@
 import subprocess
+import sys
 from pathlib import Path
 from typing import override
 
 import jsonschema
 
 from core import Context, Operation
-
 from operations.registry import register_operation
+
 
 @register_operation("refreshObsidianImage")
 class RefreshObsidianImageOperation(Operation):
@@ -53,15 +54,20 @@ class RefreshObsidianImageOperation(Operation):
 
         gibberish = '_qvBbD68Ia87vbdHe4z9Rq9WR_'
 
+        if sys.platform.startswith("win"):
+            command = ["start", "\"\""]
+        else:
+            command = ["xdg-open"]
+
         subprocess.run(
-            ["xdg-open", f"obsidian://advanced-uri?search={target_filename}&replace={target_filename + gibberish}"],
+            command + [f"obsidian://advanced-uri?search={target_filename}&replace={target_filename + gibberish}"],
             stderr=subprocess.PIPE,
             text=True,
             check=True
         )
 
         subprocess.run(
-            ["xdg-open", f"obsidian://advanced-uri?search={target_filename + gibberish}&replace={target_filename}"],
+            command + [f"obsidian://advanced-uri?search={target_filename + gibberish}&replace={target_filename}"],
             stderr=subprocess.PIPE,
             text=True,
             check=True
