@@ -17,6 +17,8 @@ Current available operations: (may increase)
 
 ## Demo
 
+https://github.com/masongyli/xournalpp-advanced-export/assets/61611025/ec042de1-fb2b-46a0-8ffe-c53ab6afce2c
+
 ## Installation, Usage, Configuration, Development
 
 See the document for detailed information.
