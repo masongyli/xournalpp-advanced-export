@@ -34,11 +34,9 @@
 ## Usage
 After installation, you can start using the plugin.
 
-Open a xopp file with Xournal++.
-
-Press the key ++g++ to start executing the plugin.
-
-After executation, you should see the image being generated in the same directory as the xopp file.
+1. Open a xopp file with Xournal++.
+2. Press the key ++g++ to start executing the plugin.
+3. After executation, you should see the image being generated in the same directory as the xopp file.
 
 ## Config pipeline
 To change the pipeline of the plugin, go to [pipeline](pipeline/index.md) for more information.
