@@ -87,8 +87,3 @@ nav:
 
 extra_css:
   - stylesheets/extra.css
-
-plugins:
-  - search:
-  - glightbox:
-      manual: true # enable manual mode, all images will not be added to the lightbox effect
