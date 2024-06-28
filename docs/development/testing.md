@@ -6,7 +6,7 @@ icon: octicons/beaker-16
 
 ## Basic test
 ```
-pipenv run --omit=test_*.py -m unittest discover -s test
+pipenv run python -m unittest discover -s test
 ```
 
 ## Test with coverage
