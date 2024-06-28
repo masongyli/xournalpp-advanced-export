@@ -1,16 +1,2 @@
-.vscode/
 .venv/
-__pycache__/
-*.pyc
-
-# pyinstaller
-build/
-dist/
-
-# generated evecutable
-/main
-/main.exe
-
-# coverage test
-.coverage
-coverage.xml
+.vscode/

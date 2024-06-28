@@ -4,17 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pillow = "*"
-pdf2image = "*"
-pathvalidate = "*"
-jsonschema = "*"
-tqdm = "*"
+mkdocs-material = "*"
+mkdocs-glightbox = "*"
 
 [dev-packages]
-pyinstaller = "*"
-coverage = "*"
-pywin32-ctypes = "*"
-pefile = "*"
 
 [requires]
 python_version = "3.12"
+python_full_version = "3.12.3"
