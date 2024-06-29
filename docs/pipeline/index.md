@@ -2,7 +2,7 @@
 
 Xournalpp Advanced Export use the `config.json` file to configure the pipeline.
 
-![alt text](../images/Untitled Diagram.drawio.svg)
+![alt text](../images/pipeline.drawio.svg)
 
 
 This is an example of `config.json`
@@ -46,7 +46,7 @@ This is an example of `config.json`
 "operations" is an array of objects, each object represents an operation. 
 The order of the operations is important, as the output of the previous operation will be the input of the next operation.
 
-- "type" is the type of the operation, it can be "load", "combine", "save" for now. 
+- "type" is the type of the operation, it can be "load", "combine", "save", "refreshObsidianImage" for now. 
 - "config" is the configuration of the operation, the content of the configuration depends on the type of the operation. If you doesn't specify the "config" field, the default configuration will be used. See the documentation of each operation for more details.
 
 !!! note

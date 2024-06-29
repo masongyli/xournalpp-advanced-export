@@ -76,6 +76,7 @@ nav:
       - Load: pipeline/operations/load.md
       - Combine: pipeline/operations/combine.md
       - Save: pipeline/operations/save.md
+      - Refresh Obsidian image: pipeline/operations/refresh-obsidian-image.md
   - Other configurations:
     - other-configurations/index.md
   
@@ -87,3 +88,12 @@ nav:
 
 extra_css:
   - stylesheets/extra.css
+
+plugins:
+  - search:
+  - git-revision-date-localized:
+      enable_creation_date: false
+  - git-committers:
+      repository: masongyli/xournalpp-advanced-export
+      branch: doc
+  # - git-authors:
