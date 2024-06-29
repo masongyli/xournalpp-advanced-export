@@ -21,4 +21,4 @@ https://github.com/masongyli/xournalpp-advanced-export/assets/61611025/ec042de1-
 
 ## Installation, Usage, Configuration, Development
 
-See the document for detailed information.
+See [the document](https://masongyli.github.io/xournalpp-advanced-export/) for detailed information.
