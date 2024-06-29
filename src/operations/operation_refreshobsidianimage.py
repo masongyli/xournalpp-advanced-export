@@ -34,9 +34,7 @@ class RefreshObsidianImageOperation(Operation):
         """
         Refresh embedded images in the Obsidian note. (apply on the last used note in the last used vault)
         
-        Caution 1: This operation relies on the "Advanced URI" plugin in Obsidian. Make sure to the plugin has been installed in Obsidian before using this operation.
-
-        Caution 2: This operation works by changing the target png name in the obsidian note into some gibberish, and change it back. Although the possibility is nearly zero, be aware that this gibberish still has chance to collide with some meaningful text in the obsidian note. (if your note do have some text look like the gibberish, you may need to change the gibberish in the code to avoid collision.)
+        Caution: This operation relies on the "Advanced URI" plugin in Obsidian. Make sure to the plugin has been installed in Obsidian before using this operation.
 
         Args:
             context (Context): The context object containing the necessary information for the operation.
@@ -49,25 +47,24 @@ class RefreshObsidianImageOperation(Operation):
 
         target_filename =  str(self._parse_filename(context.xopp_file_path)) + ".png"
         
-        # HACK
-        # To force Obsidian to rerender embedded images, we change the image link in the obsidian note by appending some gibberish to it , and restore it back (hoping it won't collide with any meaningful text in the obsidian note)
-
-        gibberish = '_qvBbD68Ia87vbdHe4z9Rq9WR_'
+        gibberish = '_tmp'
 
         if sys.platform.startswith("win"):
-            command = ["start", "\"\""]
+            command = ["cmd", "/c", "start", ""]
+            ampersand = "^&"
         else:
             command = ["xdg-open"]
+            ampersand = "&"
 
         subprocess.run(
-            command + [f"obsidian://advanced-uri?search={target_filename}&replace={target_filename + gibberish}"],
+            command + [f"obsidian://advanced-uri?search={target_filename}{ampersand}replace={target_filename}{gibberish}"],
             stderr=subprocess.PIPE,
             text=True,
             check=True
         )
-
+        
         subprocess.run(
-            command + [f"obsidian://advanced-uri?search={target_filename + gibberish}&replace={target_filename}"],
+            command + [f"obsidian://advanced-uri?search={target_filename}{gibberish}{ampersand}replace={target_filename}"],
             stderr=subprocess.PIPE,
             text=True,
             check=True
