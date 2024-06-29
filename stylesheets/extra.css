@@ -1,0 +1,11 @@
+/* .md-tabs__link {
+    color: #fff;
+  } */
+
+.md-tabs__link:hover {
+    color: #ff6400;
+}
+
+.md-grid {
+    max-width: initial;
+}
